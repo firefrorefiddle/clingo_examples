@@ -20,16 +20,17 @@ def main(prg):
 
      def on_model(model):
          resmap = []
-         for _ in range(basis * basis):
-             resmap += [[0] * basis * basis]
+         for _ in range(basis ** 2):
+             resmap += [[0] * basis ** 2]
          for atom in model.symbols(atoms=True):
              if(atom.name != "in"):
                  continue
              args = atom.arguments
              resmap[args[0].number-1][args[1].number-1] = args[2].number
          for line in resmap:
+             outfmt = "%" + str(len(str(basis**2))) + "d "
              for num in line:
-                 stdout.write("%d "%num)             
+                 stdout.write(outfmt%num)             
              print("")
          
      prg.solve(on_model=on_model)
