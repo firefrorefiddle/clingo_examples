@@ -30,7 +30,7 @@ def main(prg):
          for line in resmap:
              for num in line:
                  stdout.write("%d "%num)             
-             print ""
+             print("")
          
      prg.solve(on_model=on_model)
          
